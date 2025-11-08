@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diseño Vial App</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="" href="" />
+</head>
+
+<body>
+  <header>
+    <div class="navbar">
+      <button id="menu-btn" class="menu-btn">☰</button>
+      <h1>Diseño Vial</h1>
+    </div>
+  </header>
+
+  <aside id="sidebar" class="sidebar">
+    <ul>
+      <li><a href="pages/parametros.html" target="contentFrame">Parámetros</a></li>
+      <li><a href="pages/results.html" target="contentFrame">Resultados</a></li>
+      <li><a href="pages/curvas.html" target="contentFrame">Curvas</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <iframe name="contentFrame" src="pages/parametros.html" frameborder="0"></iframe>
+  </main>
+
+  <footer></footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
