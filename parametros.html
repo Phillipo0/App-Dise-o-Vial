@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Parámetros de Diseño Vial</title>
+  <link rel="stylesheet" href="../css/variables.css">
+</head>
+<body>
+  <section class="parametros-container">
+    <h2>Parámetros de Diseño Vial</h2>
+
+    <!-- SECCIÓN DE SELECCIÓN -->
+    <div class="parametros-selectores">
+      <div class="parametro-item">
+        <label for="tipoVia">Tipo de vía</label>
+        <select id="tipoVia">
+          <option value="">Seleccione...</option>
+          <option value="via12">Vía 1 y 2 orden</option>
+          <option value="via3">Vía 3 orden</option>
+          <option value="urbana">Vía urbana</option>
+        </select>
+      </div>
+
+      <div class="parametro-item">
+        <label for="velocidad">VCH (km/h)</label>
+        <select id="velocidad">
+          <option value="">Seleccione...</option>
+        </select>
+      </div>
+
+      <div class="parametro-item">
+        <label for="carriles">Número de carriles</label>
+        <select id="carriles">
+          <option value="">Seleccione...</option>
+          <option value="1.0">1.0</option>
+          <option value="1.5">1.5</option>
+          <option value="2.0">2.0</option>
+          <option value="2.5">2.5</option>
+          <option value="3.0">3.0</option>
+          <option value="3.5">3.5</option>
+        </select>
+      </div>
+
+      <div class="parametro-item">
+        <label for="este">ESTE</label>
+        <input type="number" id="este" placeholder="Ingrese valor (m)" />
+      </div>
+
+      <div class="parametro-item">
+        <label for="norte">NORTE</label>
+        <input type="number" id="norte" placeholder="Ingrese valor (m)" />
+      </div>
+    </div>
+
+    <!-- RESUMEN -->
+    <div class="resumen-container" id="resumen">
+      <h3>Resumen de Selección</h3>
+      <div class="resumen-info">
+        <p><strong>Tipo de vía:</strong> <span id="rTipo">-</span></p>
+        <p><strong>e<sub>max</sub>:</strong> <span id="rEmax">-</span></p>
+        <p><strong>VCH:</strong> <span id="rVch">-</span> km/h</p>
+        <p><strong># Carriles:</strong> <span id="rCarriles">-</span></p>
+        <p><strong>bw:</strong> <span id="rBw">-</span></p>
+        <p><strong>Rmin (según e):</strong> <span id="rRmin">-</span> m</p>
+        <p><strong>Δs máx:</strong> <span id="rDs">-</span></p>
+        <p><strong>Lamin:</strong> <span id="rLamin">-</span> m</p>
+      </div>
+    </div>
+
+    <!-- TABLA DE PARÁMETROS COMPLETA -->
+    <div class="tarjeta-parametro" id="tabla-parametros">
+      <h3>Tabla de Parámetros</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Parámetro</th>
+            <!--<th>Descripción</th>-->
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody id="parametros-body">
+          <tr><td>e<sub>max</sub></td><!--<td>Peralte máximo</td>--><td id="pEmax">-</td></tr>
+          <tr><td>Δs máx</td><!--<td>Pendiente relativa máxima</td>--><td id="pDsMax">-</td></tr>
+          <tr><td>Δs min</td><!--<td>Pendiente relativa mínima</td>--><td id="pDsMin">0.10</td></tr>
+          <tr><td>Rmin</td><!--<td>Radio mínimo</td>--><td id="pRmin">-</td></tr>
+          <tr><td>Lamin</td><!--<td>Longitud mínima </td>--><td id="pLamin">-</td></tr>
+          <tr><td>BN</td><!--<td>Factor fricción lateral</td>--><td id="pBn">0.11</td></tr>
+          <tr><td>a</td><!--<td>Aceleración</td>--><td id="pA">0.35</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PERALTE -->
+    <div class="tarjeta-parametro" id="tabla-peralte">
+      <h3>Peralte Máximo (e_max)</h3>
+      <table>
+        <thead><tr><th>Tipo de vía</th><th>e_max</th></tr></thead>
+        <tbody>
+          <tr data-tipo="via12"><td>Vía 1 y 2 orden</td><td>8.00%</td></tr>
+          <tr data-tipo="via3"><td>Vía 3 orden</td><td>6.00%</td></tr>
+          <tr data-tipo="urbana"><td>Vía urbana</td><td>4.00%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- VCH -->
+    <div class="tarjeta-parametro" id="tabla-vch">
+      <h3>VHC (km/h)</h3>
+      <table>
+        <thead><tr><th>Velocidad (km/h)</th></tr></thead>
+        <tbody id="tabla-vch-body"></tbody>
+      </table>
+    </div>
+
+    <!-- RADIO MINIMO (e=8%) -->
+    <div class="tarjeta-parametro" id="tabla-rmin8">
+      <h3>Radio Mínimo (e = 8%)</h3>
+      <table>
+        <thead><tr><th>Velocidad</th><th>Rmin (m)</th></tr></thead>
+        <tbody id="rmin8-body"></tbody>
+      </table>
+    </div>
+
+    <!-- RADIO MINIMO (e=6%) -->
+    <div class="tarjeta-parametro" id="tabla-rmin6">
+      <h3>Radio Mínimo (e = 6%)</h3>
+      <table>
+        <thead><tr><th>Velocidad</th><th>Rmin (m)</th></tr></thead>
+        <tbody id="rmin6-body"></tbody>
+      </table>
+    </div>
+
+    <!-- RADIO MINIMO (e=4%) -->
+    <div class="tarjeta-parametro" id="tabla-rmin4">
+      <h3>Radio Mínimo (e = 4%)</h3>
+      <table>
+        <thead><tr><th>Velocidad</th><th>Rmin (m)</th></tr></thead>
+        <tbody id="rmin4-body"></tbody>
+      </table>
+    </div>
+
+    <!-- PENDIENTE RAMPA -->
+    <div class="tarjeta-parametro" id="tabla-rampa">
+      <h3>Pendiente Relativa de la Rampa de Peraltes (Δs máx.)</h3>
+      <table>
+        <thead><tr><th>Velocidad</th><th>Δs máx.</th></tr></thead>
+        <tbody id="rampa-body"></tbody>
+      </table>
+    </div>
+
+    <!-- FACTOR bw (tabla repetida) -->
+    <div class="tarjeta-parametro" id="tabla-bw">
+      <h3>Factor de Ajuste "bw"</h3>
+      <table>
+        <thead><tr><th># Carriles</th><th>Factor</th></tr></thead>
+        <tbody>
+          <tr data-carril="1.0"><td>1.0</td><td>1.00</td></tr>
+          <tr data-carril="1.5"><td>1.5</td><td>0.83</td></tr>
+          <tr data-carril="2.0"><td>2.0</td><td>0.75</td></tr>
+          <tr data-carril="2.5"><td>2.5</td><td>0.70</td></tr>
+          <tr data-carril="3.0"><td>3.0</td><td>0.67</td></tr>
+          <tr data-carril="3.5"><td>3.5</td><td>0.64</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
